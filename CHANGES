@@ -1,0 +1,10 @@
+CHANGES
+=======
+
+* Screenwm 1.0 (10/04/06)
+    - First public release
+
+* Screenwm 2.0 (05/11/24)
+    - Added support for native Screen vertical splits
+    - Movement beyond edges now loops to other side of terminal
+    - Fixed initialization when not in home directory

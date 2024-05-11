@@ -1,0 +1,42 @@
+TODO
+====
+
+- Change info line to show region, layout, etc.
+
+- Create command to list and select layouts like ^a" for windows,
+  which would create single region and run wrapper inside, then allow
+  j/k movement and enter to select
+
+- Map window list button to only display region windows
+
+- Recover from exits automatically by examining screen -X output and/or
+  error codes
+
+- Add window title support
+
+- Create command to bind window to current region (e.g. using tab or
+  window select)
+
+- Combine layout build stuff when possible
+
+- Better documentation (man page perhaps...)
+
+- Support region resizing when moving between layouts with more accurate
+  edge detection
+
+- Process indirectly supported commands by passing through exactly
+
+- Allow windows to be shared between regions
+
+- Automatically set copy margins when in remote window
+
+- Allow region naming and switch regions like window naming
+
+- Allow layout naming and switch layouts like window naming
+
+- Allow layouts within a single region (so going to next window would go
+  to a split region)
+
+- Move ^a's in code to config
+
+- Allow windows to be moved using something like ^a[HJKL]

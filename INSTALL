@@ -1,0 +1,94 @@
+INSTALL
+=======
+
+1.  Install GNU Screen 4.2.0 or above from native package manager or:
+
+        http://www.gnu.org/software/screen
+
+
+2.  Copy screenwmrc to ~/.screenwmrc and edit it to your liking
+
+    The example screenwmrc shows all Screenwm options.  The general 
+    philosophy was to make the layout-related key bindings be the
+    capitalized version of the window-related key bindings as follows:
+    
+        Command         Window      Layout
+        =======         ======      ======
+        kill               e           E
+        next               n           N
+        other              o           O
+        previous           p           P
+        redisplay          r           R
+        screen             c           C
+        select 0           0           )
+        select 1           1           !
+        select 2           2           @
+        select 3           3           #
+        select 4           4           $
+        select 5           5           %
+        select 6           6           ^
+        select 7           7           &
+        select 8           8           *
+        select 9           9           (
+
+    Bindings were kept as close as possible to the default Screen
+    bindings with the following exceptions:
+    
+        Key         Screen          Screenwm
+        ===         ======          ========
+         *          displays        layout_select 8
+         C          clear           layout_screen
+         h          hardcopy        left
+         k          kill            up
+        ^k          kill            up
+         l          redisplay       right
+        ^l          redisplay       right
+         m          lastmsg         window_meta
+        ^m          lastmsg         window_meta
+         M          monitor         window_nometa
+         N          number          layout_next
+         r          wrap            redisplay
+        ^r          wrap            redisplay
+
+    The default screenwmrc disables caption strings, dynamic window
+    titles (required), status bar, and region separators.
+
+
+3.  Copy screenwm to a directory in your $PATH
+
+
+4.  Edit your ~/.screenrc file
+
+    To enable Screenwm, the following line must be added:
+
+        eval screen "exec screenwm init"
+
+    Note that you must always use "exec screenwm cmd" instead of just
+    "cmd" in your initialization files for the commands denoted with
+    an asterisk in the "README" document and only after you have
+    performed "exec screenwm init".
+
+    Also note that Screenwm does not currently support user-defined
+    window titles (i.e. "screen -t <title>", "title <title>", etc.) as
+    titles are used to select and manipulate windows.  Such support is
+    possible, but has not yet been implemented.
+
+    Sample ~/.screenrc:
+
+        defscrollback 10000
+        defshell /bin/bash
+        defutf8 on
+        startup_message off
+        eval screen "exec screenwm init"
+        bind > eval writebuf "exec sh -c 'xsel -bi </tmp/screen-exchange'"
+        bind < eval "exec sh -c 'xsel -bno >/tmp/screen-exchange; screen -X
+        readbuf'"
+        bind } eval writebuf "exec sh -c 'pbcopy </tmp/screen-exchange'"
+        bind { eval writebuf "exec sh -c 'pbpaste >/tmp/screen-exchange; screen -X readbuf'"
+
+
+5.  Repeat the above steps for any remote hosts that will run Screen
+
+    Screenwm can only forward commands to remote Screen sessions
+    running with the Screenwm extension.
+
